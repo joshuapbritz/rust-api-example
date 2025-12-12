@@ -14,6 +14,7 @@
 **/.settings
 **/.toolstarget
 **/.vs
+**/.logs
 **/.vscode
 **/*.*proj.user
 **/*.dbmdl

@@ -6,8 +6,12 @@ This api is written in [Rust](https://rust-lang.org/), using [Warp](https://docs
 
 Passwords are hashed using the Argon algorithim and jwts are being used for authentication sessions.
 
+The AI integration makes use of Ollama with the gemma2 model. This is running locally in our Docker container, so the AI endpoint will be quite slow.
+
 ## Running the app (Docker)
 To run this app, you will need to have Docker installed on your system. Within the repository, you can then run `docker compose up -d` to run the application. It will be expose at port `3030`.
+
+When runnning for the first time, be sure to run: `docker exec -it ollama ollama pull gemma2:2b` after you have run docker compose up to pull the model for our AI integration.
 
 ## Running the app (Development)
 To run the app in development, you will need to have `rust` and and should have `diesel` installed. You can install rust using `homebrew` or `sh`.
@@ -35,7 +39,13 @@ Note that you will need to make sure your `.env` file has the correct database u
 To run the application for development, you will need to boot up just the Postgres db. You can do that following the steps above if you don't want to run the db in Docker. However, Docker is the simplest route, and you can run the database there by running:
 
 ```bash
-docker compose up -d database
+docker compose up -d database ollama
+```
+
+Then, if it is your first time running, pull the llm model we are going to use:
+
+```bash
+docker exec -it ollama ollama pull gemma2:2b
 ```
 
 Once the database image is up and running, you can start your app using cargo.

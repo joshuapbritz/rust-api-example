@@ -1,5 +1,6 @@
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
+use ollama_rs::generation::parameters::JsonSchema;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -77,7 +78,7 @@ pub struct TodoRequest {
     pub body: String,
 }
 
-#[derive(Insertable, Serialize, Deserialize)]
+#[derive(Insertable, Serialize, Deserialize, JsonSchema)]
 #[diesel(table_name = todos)]
 pub struct InsertableTodo {
     pub title: String,

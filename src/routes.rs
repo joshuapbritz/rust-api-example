@@ -33,6 +33,7 @@ fn health_routes() -> impl Filter<Extract = impl warp::Reply, Error = warp::Reje
 
 fn ai_routes() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::post()
+        .and(middleware::auth::authenticated())
         .and(warp::path("ai"))
         .and(warp::path::end())
         .and(warp::body::json())

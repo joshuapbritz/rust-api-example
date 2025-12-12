@@ -1,4 +1,23 @@
 services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    environment:
+      - OLLAMA_FLASH_ATTENTION=1
+      - OLLAMA_KV_CACHE_TYPE=q8_0
+      - OLLAMA_NUM_PARALLEL=4
+      - OLLAMA_MAX_VRAM=1073741824 # 1GIB
+      - OLLAMA_KEEP_ALIVE=5m
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
   server:
     build:
       context: .
@@ -7,10 +26,11 @@ services:
       database:
         condition: service_healthy
     environment:
-      AI_API_KEY: your_api_key
       DATABASE_URL: postgresql://lb:lbpassword@host.docker.internal:43432/lucky_db
       SERVER_PORT: 3030
       JWT_SECRET: supersecret
+      OLLAMA_HOST: http://host.docker.internal
+      OLLAMA_PORT: 11434
     ports:
       - 3030:3030
   database:
@@ -31,4 +51,6 @@ services:
     ports:
       - "43432:5432"
 volumes:
+  ollama_data:
+    driver: local
   lb_db_vol:
