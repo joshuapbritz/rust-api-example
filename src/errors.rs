@@ -8,6 +8,8 @@ use warp::{Rejection, Reply};
 pub enum ServiceError {
     #[error("unauthorized")]
     Unauthorized,
+    #[error("unhealthy: {0}")]
+    Unhealthy(&'static str),
     #[error("{0} not found")]
     NotFound(&'static str),
     #[error("already exists")]
@@ -109,6 +111,10 @@ impl From<&ServiceError> for ErrMsg {
             ServiceError::Unauthorized => ErrMsg::new(StatusCode::UNAUTHORIZED, "Unauthorized"),
             ServiceError::AlreadyExists(_) => ErrMsg::new(StatusCode::CONFLICT, "Already exists"),
             ServiceError::BadRequest => ErrMsg::new(StatusCode::BAD_REQUEST, "Bad Request"),
+            ServiceError::Unhealthy(message) => ErrMsg::new(
+                StatusCode::SERVICE_UNAVAILABLE,
+                format!("Application is unhealth: {}", message).as_str(),
+            ),
             _ => ErrMsg::new(StatusCode::INTERNAL_SERVER_ERROR, "UNHANDLED_REJECTION"),
         }
     }

@@ -28,7 +28,7 @@ fn health_routes() -> impl Filter<Extract = impl warp::Reply, Error = warp::Reje
     warp::get()
         .and(warp::path("health"))
         .and(warp::path::end())
-        .and_then(controllers::root)
+        .and_then(controllers::health::get_health)
 }
 
 fn ai_routes() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
