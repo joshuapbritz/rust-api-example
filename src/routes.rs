@@ -19,6 +19,8 @@ pub fn router()
         .and(warp::path::end())
         .and_then(controllers::root)
         .or(v1_routes)
+        .with(warp::log("api"))
+        .with(warp::cors().allow_any_origin())
         .recover(handle_rejection)
 }
 

@@ -4,7 +4,6 @@ use std::convert::Infallible;
 use warp::http::StatusCode;
 use warp::{Rejection, Reply};
 
-/// An internal error enum for representing all the possible failure states
 #[derive(thiserror::Error, Debug)]
 pub enum ServiceError {
     #[error("unauthorized")]
@@ -16,7 +15,7 @@ pub enum ServiceError {
     #[error("bad request")]
     BadRequest,
     #[error(transparent)]
-    Other(#[from] anyhow::Error), // source and Display delegate to anyhow::Error
+    Other(#[from] anyhow::Error),
 }
 
 impl warp::reject::Reject for ServiceError {}
@@ -55,7 +54,6 @@ impl From<diesel::result::Error> for ServiceError {
     }
 }
 
-/// An API error serializable to JSON responses
 struct ErrMsg {
     statuscode: StatusCode,
     message: String,
@@ -127,7 +125,6 @@ impl From<StatusCode> for ErrMsg {
 }
 
 pub async fn handle_rejection(r: Rejection) -> Result<impl Reply, Infallible> {
-    println!("{:?}", r);
-
+    log::error!("{:?}", r);
     Ok(ErrMsg::from(r).into_reply())
 }

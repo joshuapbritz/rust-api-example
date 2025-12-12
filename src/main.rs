@@ -11,11 +11,12 @@ mod utils;
 async fn main() {
     let cfg = config::config();
 
+    utils::logger::init();
     utils::migrations::sync().expect("Couldn't run migrations");
 
     let routes = routes::router();
 
-    println!("Server started at http://localhost:3030");
+    log::info!("Server started at http://localhost:3030");
 
     warp::serve(routes)
         .run(([0, 0, 0, 0], cfg.server_port))

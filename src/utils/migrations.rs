@@ -10,7 +10,7 @@ pub fn sync() -> Result<(), std::io::Error> {
         .run_pending_migrations(MIGRATIONS)
         .expect("Failed to run migrations");
 
-    println!("Successfully ran diesel migrations");
+    log::info!("Successfully ran diesel migrations");
 
     Ok(())
 }
