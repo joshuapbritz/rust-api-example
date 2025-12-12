@@ -1,0 +1,34 @@
+services:
+  server:
+    build:
+      context: .
+      target: final
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      AI_API_KEY: your_api_key
+      DATABASE_URL: postgresql://lb:lbpassword@host.docker.internal:43432/lucky_db
+      SERVER_PORT: 3030
+      JWT_SECRET: supersecret
+    ports:
+      - 3030:3030
+  database:
+    image: postgres:18-alpine
+    container_name: lb_db
+    environment:
+      POSTGRES_DB: medusa_db
+      POSTGRES_USER: lb
+      POSTGRES_PASSWORD: lbpassword
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - lb_db_vol:/var/lib/postgresql/data
+    ports:
+      - "43432:5432"
+volumes:
+  lb_db_vol:
