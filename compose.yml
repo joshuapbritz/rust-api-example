@@ -17,7 +17,7 @@ services:
     image: postgres:18-alpine
     container_name: lb_db
     environment:
-      POSTGRES_DB: medusa_db
+      POSTGRES_DB: lucky_db
       POSTGRES_USER: lb
       POSTGRES_PASSWORD: lbpassword
     healthcheck:

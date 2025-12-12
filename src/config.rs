@@ -1,5 +1,5 @@
-use once_cell::sync::Lazy;
 use std::env;
+use std::sync::OnceLock;
 
 pub struct Config {
     pub database_url: String,
@@ -22,11 +22,11 @@ impl Config {
     }
 }
 
-pub static CONFIG: Lazy<Config> = Lazy::new(|| {
-    dotenvy::dotenv().ok();
-    Config::from_env()
-});
+static LOADED_CONFIG: OnceLock<Config> = OnceLock::new();
 
 pub fn config() -> &'static Config {
-    &CONFIG
+    LOADED_CONFIG.get_or_init(|| {
+        dotenvy::dotenv().ok();
+        Config::from_env()
+    })
 }
