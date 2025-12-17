@@ -1,0 +1,598 @@
+{
+  "meta": {
+    "format": "httpie",
+    "version": "1.0.0",
+    "contentType": "workspace",
+    "schema": "https://schema.httpie.io/1.0.0.json",
+    "docs": "https://httpie.io/r/help/export-from-httpie",
+    "source": "HTTPie Desktop 2025.2.0"
+  },
+  "entry": {
+    "name": "Luckybeard",
+    "icon": {
+      "name": "heart",
+      "color": "yellow"
+    },
+    "collections": [
+      {
+        "name": "Auth",
+        "icon": {
+          "name": "lock",
+          "color": "pink"
+        },
+        "auth": {
+          "type": "none"
+        },
+        "requests": [
+          {
+            "name": "",
+            "url": "{{baseUrl}}/auth/login",
+            "method": "POST",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "inherited"
+            },
+            "body": {
+              "type": "text",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"email\": \"joshua@gmail.com\",\n  \"password\": \"password123\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "",
+            "url": "{{baseUrl}}/auth/register",
+            "method": "POST",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "inherited"
+            },
+            "body": {
+              "type": "text",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"email\": \"joshua@gmail.com\",\n  \"username\": \"joshua.paul\",\n  \"name\": \"Joshua\",\n  \"surname\": \"Britz\",\n  \"password\": \"password123\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "ToDos",
+        "icon": {
+          "name": "paperPencil",
+          "color": "red"
+        },
+        "auth": {
+          "type": "none"
+        },
+        "requests": [
+          {
+            "name": "Get Todos",
+            "url": "{{baseUrl}}/todos",
+            "method": "GET",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Get Todo",
+            "url": "{{baseUrl}}/todos/996b85c5-ec2b-4181-9e9b-68876d1f7da7",
+            "method": "GET",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Get Archived Todos",
+            "url": "{{baseUrl}}/todos/archived",
+            "method": "GET",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Delete Todo",
+            "url": "{{baseUrl}}/todos/996b85c5-ec2b-4181-9e9b-68876d1f7da7",
+            "method": "DELETE",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"title\": \"Feed the cat\",\n  \"body\": \"Do it today\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Restore Todo",
+            "url": "{{baseUrl}}/todos/e5f83e0a-eae9-4223-9f5b-bfcec2faa64a/restore",
+            "method": "PATCH",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"title\": \"Feed the cat\",\n  \"body\": \"Do it today\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Toggle Todo State",
+            "url": "{{baseUrl}}/todos/93668551-b365-4e13-93b2-f13c15d82fa3/toggle/true",
+            "method": "PATCH",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"title\": \"Feed the cat\",\n  \"body\": \"Do it today\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "Create Todo",
+            "url": "{{baseUrl}}/todos",
+            "method": "POST",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "text",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"title\": \"Write something cool\",\n  \"body\": \"Also in Rust, that would be awesome\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Utility",
+        "icon": {
+          "name": "thumbUp",
+          "color": "green"
+        },
+        "auth": {
+          "type": "none"
+        },
+        "requests": [
+          {
+            "name": "",
+            "url": "{{baseUrl}}/health",
+            "method": "GET",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "inherited"
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Analytics",
+        "icon": {
+          "name": "wrench",
+          "color": "purple"
+        },
+        "auth": {
+          "type": "none"
+        },
+        "requests": [
+          {
+            "name": "",
+            "url": "{{baseUrl}}/analytics/todos",
+            "method": "GET",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "none",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "File Upload",
+        "icon": {
+          "name": "rocket",
+          "color": "pink"
+        },
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": ""
+          }
+        },
+        "requests": [
+          {
+            "name": "",
+            "url": "{{baseUrl}}/file/todos/csv",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "text/csv",
+                "enabled": true
+              }
+            ],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "form",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": true,
+                "fields": [
+                  {
+                    "name": "file",
+                    "value": "",
+                    "enabled": true,
+                    "type": "file"
+                  }
+                ]
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          },
+          {
+            "name": "",
+            "url": "{{baseUrl}}/file/todos/json",
+            "method": "POST",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "form",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": true,
+                "fields": [
+                  {
+                    "name": "file",
+                    "value": "",
+                    "enabled": true,
+                    "type": "file"
+                  }
+                ]
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "AI",
+        "icon": {
+          "name": "creditCard",
+          "color": "blue"
+        },
+        "auth": {
+          "type": "none"
+        },
+        "requests": [
+          {
+            "name": "",
+            "url": "{{baseUrl}}/ai",
+            "method": "POST",
+            "headers": [],
+            "queryParams": [],
+            "pathParams": [],
+            "auth": {
+              "type": "bearer",
+              "target": "headers",
+              "credentials": {
+                "username": "",
+                "password": "{{jwtToken}}"
+              }
+            },
+            "body": {
+              "type": "text",
+              "file": {
+                "name": ""
+              },
+              "text": {
+                "value": "{\n  \"input\": \"Show my wife this project and then go to the store. Oh and I am almost out of eggs.\"\n}",
+                "format": "application/json"
+              },
+              "form": {
+                "isMultipart": false,
+                "fields": []
+              },
+              "graphql": {
+                "query": "",
+                "variables": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "environments": [
+      {
+        "name": "Defaults",
+        "color": "gray",
+        "isDefault": true,
+        "isLocalOnly": false,
+        "variables": [
+          {
+            "name": "baseUrl",
+            "value": "http://localhost:3030/v1",
+            "isSecret": false
+          },
+          {
+            "name": "jwtToken",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NjU5MDUwMzQsImV4cCI6MTc2NTk5MTQzNCwic3ViamVjdCI6IjUyMGUwNTFjLTc5ZjItNDE1Mi04MmM2LTBhZjRlZDY5NDBhYiJ9.5PFNc0QX9i5QuuYVN9ea2p5HRw0zqofCVfcJfguz538",
+            "isSecret": true
+          }
+        ]
+      }
+    ],
+    "drafts": []
+  }
+}
