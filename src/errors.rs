@@ -22,11 +22,6 @@ pub enum ServiceError {
 
 impl warp::reject::Reject for ServiceError {}
 
-#[derive(Debug)]
-struct RateLimitError;
-
-impl warp::reject::Reject for RateLimitError {}
-
 impl From<r2d2::Error> for ServiceError {
     fn from(e: r2d2::Error) -> Self {
         ServiceError::Other(e.into())
